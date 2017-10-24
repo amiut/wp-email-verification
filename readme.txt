@@ -23,3 +23,23 @@ There are also `dw_verify_email_template_path` and `dw_verify_email_template_arg
 ***
 ## 3rd-party scripts included
 [WP_MAIL](https://github.com/anthonybudd/WP_Mail) ( for sending templated emails )
+
+== Installation ==
+Seach the plugin's name in the install plugin section in your dashboard
+Or upload the plugin and extract it to wp-content/plugins/ and then activate it in your dashboard, under the plugins page
+
+== Frequently Asked Questions ==
+
+= How does this plugin work? =
+
+Once you activate it, new users that register on your site must verify their email address by a confirmation link which is sent to their email address, otherwise they won't be able to log-in.
+
+== Changelog ==
+
+= 1.1 =
+* Added ability to ignore verification for admins in dashboard.
+* Added ability to request for re-sending the verification link.
+* Added Max re-send verification link requests
+* Fixed some issues
+* Persian language updated
+* Multisite integration

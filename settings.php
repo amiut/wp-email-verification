@@ -26,9 +26,6 @@ class DWEmailVerifySettings{
 
 		add_action( 'admin_init', array( $this, 'settings' ) );
 		add_action( 'admin_menu', [ $this, 'menus' ] );
-		add_action('user_new_form', function(){
-			echo 'aaa';
-		});
 	}
 
 	/**

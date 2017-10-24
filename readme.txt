@@ -34,6 +34,11 @@ Or upload the plugin and extract it to wp-content/plugins/ and then activate it 
 
 Once you activate it, new users that register on your site must verify their email address by a confirmation link which is sent to their email address, otherwise they won't be able to log-in.
 
+== Screenshots ==
+1. Settings pages
+2. Add user
+3. Wp-Login
+
 == Changelog ==
 
 = 1.1 =

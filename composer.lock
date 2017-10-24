@@ -1,0 +1,47 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "a3ca89af3d4b16c5ed327ff89359ca70",
+    "packages": [
+        {
+            "name": "anthonybudd/wp_mail",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anthonybudd/WP_Mail.git",
+                "reference": "218cc2cf79168b2465ba8784feccb15ebabb115c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anthonybudd/WP_Mail/zipball/218cc2cf79168b2465ba8784feccb15ebabb115c",
+                "reference": "218cc2cf79168b2465ba8784feccb15ebabb115c",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/WP_Mail.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Anthony Budd",
+                    "email": "anthonybudd94@gmail.com"
+                }
+            ],
+            "time": "2017-05-16T11:19:12+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

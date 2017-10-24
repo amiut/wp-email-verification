@@ -1,0 +1,5 @@
+{
+    "require": {
+        "anthonybudd/WP_Mail": "^1.0"
+    }
+}

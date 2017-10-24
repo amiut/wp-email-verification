@@ -1,0 +1,730 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Verify email plugin\n"
+"POT-Creation-Date: 2017-10-25 02:05+0330\n"
+"PO-Revision-Date: 2017-10-25 02:05+0330\n"
+"Last-Translator: Amin <amin.pe94@gmail.com>\n"
+"Language-Team: Am!n <dornaweb.com>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .git\n"
+
+#: email-verify.php:75
+msgid "Are you sure you want to re-send verification link?"
+msgstr "آیا مطمئنید میخواهید لینک فعالسازی دوباره ارسال شود؟"
+
+#: email-verify.php:86
+msgid "Authorize"
+msgstr "تایید ایمیل"
+
+#: email-verify.php:186
+#, php-format
+msgid ""
+"You have not verified your email address, please check your email and click "
+"on verification link we sent you, <a href=\"#resend\" onClick=\"%s\">Re-send "
+"the link</a>"
+msgstr ""
+"شما ایمیل خود را تایید نکرده اید لطفا وارد ایمیل خود شوید و بر روی لینک "
+"فعالسازی کلیک کنید, <a href=\"#resend\" onClick=\"%s\">ارسال مجدد لینک "
+"فعالسازی</a>"
+
+#: email-verify.php:222
+msgid "Verify your email address"
+msgstr "ایمیل خود را تایید کنید"
+
+#: settings.php:81 settings.php:95
+msgid "Email verification settings"
+msgstr "تنظیمات تایید ایمیل"
+
+#: settings.php:82
+msgid "email verification"
+msgstr "تایید ایمیل"
+
+#: settings.php:110
+msgid "Authorize page: "
+msgstr "صفحه تایید ایمیل: "
+
+#: settings.php:123
+msgid "Auto login"
+msgstr "ورود خودکار"
+
+#: settings.php:124
+msgid "Auto login: "
+msgstr "ورود خودکار: "
+
+#: settings.php:126
+msgid "Automatically sign-in after verification"
+msgstr "بعد از تایید بصورت خودکار کاربر را لاگین کن"
+
+#: settings.php:131
+msgid "Redirect page: "
+msgstr "صفحه ریدایرکت: "
+
+#: settings.php:144
+msgid "Max Re-send attempts: "
+msgstr "حداکثر ارسال مجدد: "
+
+#: settings.php:147
+msgid ""
+"Max number of re-send requests a user can make, more than that, his account "
+"will be locked."
+msgstr ""
+"اگر کاربر بیشتر از این تعداد درخواست ارسال مجدد لینک فعالسازی ارسال کند, "
+"اکانتش قفل می شود."
+
+#: settings.php:172
+msgid "-Select a page-"
+msgstr "-یک صفحه انتخاب کنید-"
+
+#: shortcode.php:78
+msgid "Invalid request"
+msgstr "درخواست شما معتبر نیست"
+
+#: shortcode.php:82
+#, php-format
+msgid ""
+"Your email has been verified, you will be redirected in a few seconds <a "
+"href=\"%s\">click here</a> if your browser does not redirect you "
+"automatically."
+msgstr ""
+"ایمیل شما با موفقیت تایید شد و طی چند ثانیه منتقل می شوید در صورتی که بطور "
+"خودکار منتقل نشدید ,  <a href=\"%s\">کلیک کنید</a>."
+
+#: shortcode.php:86
+msgid "Sorry we could not verify your email address."
+msgstr "متاسفیم , نتوانستیم ایمیل شما را تایید کنیم."
+
+#: user-mods.php:56
+msgid "Inavlid request."
+msgstr "درخواست شما معتبر نیست."
+
+#: user-mods.php:66
+msgid "Verification link sent to user's email address"
+msgstr "لینک فعالسازی به ایمیل کاربر ارسال شد"
+
+#: user-mods.php:78
+msgid "Verification link sent to your email address"
+msgstr "لینک فعالسازی به ایمیل شما ارسال شد"
+
+#: user-mods.php:87
+msgid ""
+"You have tried re-sending verification link too many times, please contact "
+"site administrators."
+msgstr ""
+"شما بیش از دفعات مجاز درخواست اسال مجدد لینک ارسال کرده اید, در صورت بروز "
+"مشکل لطفا با مدیریت تماس بگیرید."
+
+#: user-mods.php:96
+msgid "Your email address is already verified."
+msgstr "آدرس ایمیل شما تایید شده است."
+
+#: user-mods.php:111
+msgid "Skip email verification"
+msgstr "عدم تایید ایمیل"
+
+#: user-mods.php:114
+msgid "No need for this user to verify their email address."
+msgstr "متاسفیم , نتوانستیم ایمیل شما را تایید کنیم."
+
+#: user-mods.php:125
+msgid "Email verification options"
+msgstr "تنظیمات تایید ایمیل"
+
+#: user-mods.php:129
+msgid "Resend verification email: "
+msgstr "تایید ایمیل: "
+
+#: user-mods.php:131
+msgid "Resend verification email"
+msgstr "ارسال مجدد ایمیل فعالسازی"
+
+#: user-mods.php:133
+msgid ""
+"This will lock user's account and asks them to verify their email address, "
+"once again."
+msgstr ""
+"با این کار حساب این کاربر تا زمانی که ایمیل خود را مجددا تایید ننماید مسدود "
+"خواهد شد."
+
+#: user-mods.php:140
+msgid "Unlock user: "
+msgstr "فعال کردن کاربر: "
+
+#: user-mods.php:144
+msgid "Exclude this user from verification of their email."
+msgstr "غیرفعالسازی تایید ایمیل برای این کاربر."
+
+#: user-mods.php:146
+msgid ""
+"This user has not verified his/her email address, you can allow him/her, not "
+"to."
+msgstr ""
+"این کاربر ایمیل خود را تایید نکرده است, میتوانید این کاربر را از تایید ایمیل "
+"معاف کنید."
+
+#: user-mods.php:157
+msgid ""
+"This user won't be able to sign-in, until they verify their email address "
+"again, Are you sure you want to do that?"
+msgstr ""
+"این کاربر تا زمانی که مجددا ایمیل خود را تایید نکند نمیتواند وارد حساب خود "
+"شود, آیا مطمئنید؟"
+
+#~ msgid "404 Error: Page not found"
+#~ msgstr "خطای 404:‌چیزی یافت نشد"
+
+#~ msgid "The Page you're looking for not found"
+#~ msgstr "صفحه مورد نظر شما پیدا نشد"
+
+#~ msgid "The page you are looking for does not exist or is deleted."
+#~ msgstr ""
+#~ "صفحه ای که به دنبال آن می گردید وجود ندارد یا ممکن است حذف شده باشد."
+
+#~ msgid "Filter date"
+#~ msgstr "بر اساس تاریخ"
+
+#~ msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+#~ msgstr "لطفا برای ارسال دیدگاه <a href=\"%s\">لاگین</a>  کنید."
+
+#~ msgid ""
+#~ "You are logged-in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title="
+#~ "\"Log out\">log out?</a>"
+#~ msgstr ""
+#~ "وارد شده بعنوان <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log "
+#~ "out\">خروج؟</a>"
+
+#~ msgid "Cancel reply"
+#~ msgstr "لغو پاسخگویی"
+
+#~ msgid "Name:"
+#~ msgstr "نام:"
+
+#~ msgid "Email:"
+#~ msgstr "ایمیل:"
+
+#~ msgid "Website:"
+#~ msgstr "وبسایت:"
+
+#~ msgid "Say your opinion about our website..."
+#~ msgstr "نظر خود را درباره وبسایت اعلام نمایید..."
+
+#~ msgid "Message..."
+#~ msgstr "پیغام..."
+
+#~ msgid "Send"
+#~ msgstr "ارسال"
+
+#~ msgid "Comments are closed."
+#~ msgstr "امکان درج نظر جدید نیست."
+
+#~ msgid "No comments yet."
+#~ msgstr "هیچ نظری ثبت نشده است."
+
+#~ msgid "CONTACT US:"
+#~ msgstr "تماس با ما:"
+
+#~ msgid "Contact us in telegram"
+#~ msgstr "با ما از طریق تلگرام در ارتباط باشید"
+
+#~ msgid "Copyright &copy; 2016-%d  Cyclical Waves  All Rights Reserved."
+#~ msgstr ""
+#~ "کپی رایت &copy; 2016-%d , تمام حقوق سایت برای Cyclical waves محفوظ است."
+
+#~ msgid "cyclical waves on Telegram"
+#~ msgstr "ما را در تلگرام دنبال کنید"
+
+#~ msgid "cyclical waves on Facebook"
+#~ msgstr "صفحه ی رسمی سایت در فیس بوک"
+
+#~ msgid "cyclical waves on Google plus"
+#~ msgstr "ما را در گوگل پلاس دنبال کنید"
+
+#~ msgid "cyclical waves on Twitter"
+#~ msgstr "ما را در توئیتر دنبال کنید"
+
+#~ msgid "cyclical waves on Linkedin"
+#~ msgstr "ما را در لینکدین دنبال کنید"
+
+#~ msgid "Top menu"
+#~ msgstr "منو بالا"
+
+#~ msgid "Bottom menu"
+#~ msgstr "منو پایین"
+
+#~ msgid "Categories menu"
+#~ msgstr "منوی دسته بندی"
+
+#~ msgid "Responsive menu"
+#~ msgstr "منوی ریسپانسیو"
+
+#~ msgid "Theme settings"
+#~ msgstr "تنظیمات قالب"
+
+#~ msgid "General settigns"
+#~ msgstr "تنظیمات عمومی"
+
+#~ msgid "Social networks and communcations settings"
+#~ msgstr "تنظیمات شبکه های اجتماعی"
+
+#~ msgid "Social settings"
+#~ msgstr "تنظیمات اجتماعی"
+
+#~ msgid "ACF Pro plugin must be installed"
+#~ msgstr "پلاگین ACF Pro باید نصب باشد"
+
+#~ msgid "Day"
+#~ msgstr "روز"
+
+#~ msgid "Days"
+#~ msgstr "روز"
+
+#~ msgid "Month"
+#~ msgstr "ماه"
+
+#~ msgid "Months"
+#~ msgstr "ماه"
+
+#~ msgid "عنوان فارسی"
+#~ msgstr "عنوان فارسی"
+
+#~ msgid "این عنوان در نسخه فارسی سایت نشان داده می شود."
+#~ msgstr "این عنوان در نسخه فارسی سایت نشان داده می شود."
+
+#~ msgid "توضیحات فارسی"
+#~ msgstr "توضیحات فارسی"
+
+#~ msgid "این توضیحات در نسخه فارسی نشان داده می شوند.."
+#~ msgstr "این توضیحات در نسخه فارسی نشان داده می شوند.."
+
+#~ msgid "قیمت فارسی"
+#~ msgstr "قیمت فارسی"
+
+#~ msgid "نمایش قیمت در نسخه فارسی."
+#~ msgstr "نمایش قیمت در نسخه فارسی."
+
+#~ msgid "<i class=\"sprite-forward-arrow\"></i> <span>Reply</span>"
+#~ msgstr "<i class=\"sprite-forward-arrow\"></i> <span>پاسخگویی</span>"
+
+#~ msgid "Passwords don't match"
+#~ msgstr "رمز عبور مطابقت ندارد"
+
+#~ msgid "Extra profile information"
+#~ msgstr "اطلاعات اضافی پروفایل"
+
+#~ msgid "Phone"
+#~ msgstr "شماره موبایل"
+
+#~ msgid "Please enter your phone number."
+#~ msgstr "لطفا شماره موبایل خود را وارد کنید."
+
+#~ msgid "Country"
+#~ msgstr "کشور"
+
+#~ msgid "Please enter your country."
+#~ msgstr "لطفا نام کشور خود را وارد کنید."
+
+#~ msgid "Sorry, We do not accept registeration of new users at the moment"
+#~ msgstr "متاسفانه در حال حاضر از ثبت نام کاربر جدید معذوریم"
+
+#~ msgid "Please enter your first name and last name"
+#~ msgstr "لطفا نام و نام خانوادگی خود را وارد کنید"
+
+#~ msgid "You must enter your email."
+#~ msgstr "شما باید ایمیل خود را وارد کنید."
+
+#~ msgid "Entered email is already registered in our website."
+#~ msgstr "ایمیل وارد شده قبلا توسط شما یا کاربر دیگری در وبسایت ثبت شده است."
+
+#~ msgid "This username already exists, try a different one."
+#~ msgstr ""
+#~ "این نام کاربری قبلا ثبت شده است، لطفا نام کاربری دیگری را انتخاب کنید."
+
+#~ msgid "Enter your phone number."
+#~ msgstr "لطفا شماره موبایل خود را وارد کنید."
+
+#~ msgid "Phone number can only contain digits."
+#~ msgstr "شماره موبایل را به صورت صحیح وارد کنید."
+
+#~ msgid "The entered email is invalid."
+#~ msgstr "ایمیل وارد شده معتبر نمیباشد."
+
+#~ msgid ""
+#~ "Sorry, we couldn'nt create a username from your email, please try a "
+#~ "different email address."
+#~ msgstr "متاسفانه ایمیل شما معتبر نمیباشد، لطفا از آدرس دیگری استفاده کنید."
+
+#~ msgid "Enter a password."
+#~ msgstr "رمز عبور را وارد کنید."
+
+#~ msgid "Passwords cannot contain the \"\\\" character."
+#~ msgstr "رمز عبور نمیتواند شامل \"\\\" باشد."
+
+#~ msgid "Password must be at least 6 characters."
+#~ msgstr "رمز عبور باید حداقل 6 کلمه باشد."
+
+#~ msgid "The entered passwords do not match."
+#~ msgstr "رمز وارد شده مطابقت ندارد."
+
+#~ msgid "Select your country or territory."
+#~ msgstr "لطفا کشور خود را انتخاب کنید."
+
+#~ msgid "Error"
+#~ msgstr "خطا"
+
+#~ msgid "Success"
+#~ msgstr "عملیات موفقیت آمیز"
+
+#~ msgid ""
+#~ "You successfuly logged-in, you will be redirected to your account page, "
+#~ "<a href=\"%s\">Click here</a> to redirect now"
+#~ msgstr ""
+#~ "شما وارد حساب خود شدید و به صفحه حساب کاربری خود منتقل می شوید ,  <a href="
+#~ "\"%s\">رفتن به صفحه کاربری</a>"
+
+#~ msgid "You are already logged-in."
+#~ msgstr "شما قبل تر به سایت وارد شده اید."
+
+#~ msgid "Please enter your username or email address."
+#~ msgstr "لطفا نام کاربری و یا آدرس ایمیل خود را وارد کنید."
+
+#~ msgid "User does not exist."
+#~ msgstr "همچین نام کاربری در سیستم پیدا نشد."
+
+#~ msgid "Empty or bad password."
+#~ msgstr "رمز عبور را وارد کنید ( حداقل 6 کاراکتر‌)"
+
+#~ msgid "--Select a counntry--"
+#~ msgstr "--کشور خود را انتخاب کنید --"
+
+#~ msgid "Announcements"
+#~ msgstr "اطلاعیه‌"
+
+#~ msgid "Ops! No article found!"
+#~ msgstr "خطا، پست جدیدی قابل مشاهده نیست!"
+
+#~ msgid "Free!"
+#~ msgstr "تحلیل های رایگان!"
+
+#~ msgid "More"
+#~ msgstr "ادامه مطلب"
+
+#~ msgid "Register <span class=\"rest\">to see samples</span>"
+#~ msgstr "ثبت نام <span class=\"rest\">برای دیدن نمونه ها</span>"
+
+#~ msgid "Login <span class=\"rest\">to your account</span>"
+#~ msgstr "ورود <span class=\"rest\">به حساب کاربری</span>"
+
+#~ msgid "First Name"
+#~ msgstr "نام"
+
+#~ msgid "Last Name"
+#~ msgstr "نام خانوادگی"
+
+#~ msgid "Email"
+#~ msgstr "آدرس ایمیل"
+
+#~ msgid "Iran (Islamic Republic of)"
+#~ msgstr "ایران"
+
+#~ msgid "United States"
+#~ msgstr "آمریکا"
+
+#~ msgid "United Kingdom"
+#~ msgstr "انگلیس"
+
+#~ msgid "Password"
+#~ msgstr "رمز عبور"
+
+#~ msgid "Confirm Password"
+#~ msgstr "تایید رمز عبور"
+
+#~ msgid "Register"
+#~ msgstr "ثبت نام"
+
+#~ msgid "Username or Email address"
+#~ msgstr "نام کاربری یا آدرس ایمیل"
+
+#~ msgid "loading"
+#~ msgstr "درحال بارگذاری"
+
+#~ msgid "Login"
+#~ msgstr "ورود"
+
+#~ msgid "Partners"
+#~ msgstr "همکاران"
+
+#~ msgid "Last Blog &amp; Market Analysis"
+#~ msgstr "آخرین مطالب و تحلیل ها"
+
+#~ msgid "Your Account"
+#~ msgstr "ناحیه کاربری"
+
+#~ msgid "Orders"
+#~ msgstr "سفارشات"
+
+#~ msgid "Subscription plans"
+#~ msgstr "پلن های اشتراک"
+
+#~ msgid "Price Table"
+#~ msgstr "قیمت محصولات"
+
+#~ msgid "Feedbacks"
+#~ msgstr "نظرات مشتریان"
+
+#~ msgid "Edit Account"
+#~ msgstr "ویرایش اکانت"
+
+#~ msgid "User Guide"
+#~ msgstr "سوالات متداول"
+
+#~ msgid "Support"
+#~ msgstr "ارتباط با مدیریت"
+
+#~ msgid "Logout"
+#~ msgstr "خروج"
+
+#~ msgid "Registration Date:"
+#~ msgstr "تاریخ عضویت:"
+
+#~ msgid "Last Access:"
+#~ msgstr "آخرین ورود:"
+
+#~ msgid "Account Status:"
+#~ msgstr "وضعیت اکانت:"
+
+#~ msgid "( expiring in %d days )"
+#~ msgstr "( انقضا طی %d روز )"
+
+#~ msgid "Analysis  Services"
+#~ msgstr "خدمات تحلیلی"
+
+#~ msgid "More info. about analysis services"
+#~ msgstr "More info. about analysis services"
+
+#~ msgid "more details"
+#~ msgstr "اطلاعات بیشتر"
+
+#~ msgid "Trading Tools"
+#~ msgstr "ابزارهای معاملاتی"
+
+#~ msgid "More info. about trading tools"
+#~ msgstr "اطلاعات بیشتر"
+
+#~ msgid "Webinars"
+#~ msgstr "وبینار ها"
+
+#~ msgid "More info. about webinars"
+#~ msgstr "اطلاعات بیشتر"
+
+#~ msgid "Education"
+#~ msgstr "آموزش"
+
+#~ msgid "More info. about educations"
+#~ msgstr "اطلاعات بیشتر"
+
+#~ msgid "Why Us?"
+#~ msgstr "چرا ما؟"
+
+#~ msgid "Who We Are?"
+#~ msgstr "ما که هستیم؟"
+
+#~ msgid "What We Do?"
+#~ msgstr "ما چه میکنیم؟"
+
+#~ msgid "Invoice %s"
+#~ msgstr "فاکتور %s"
+
+#~ msgid "Bill To:"
+#~ msgstr "به نام: "
+
+#~ msgid "Invoice Items:"
+#~ msgstr "محتوای فاکتور:"
+
+#~ msgid "Total Price:"
+#~ msgstr "قیمت کل:"
+
+#~ msgid "Payment Status:"
+#~ msgstr "وضعیت پرداخت"
+
+#~ msgid "Additional Info:"
+#~ msgstr "اطلاعات اضافی"
+
+#~ msgid "Payment Date:"
+#~ msgstr "تاریخ پرداخت:"
+
+#~ msgid "Print"
+#~ msgstr "پرینت"
+
+#~ msgid "Already have an account? Log-in!"
+#~ msgstr "قبلا ثبت نام کرده اید؟ وارد شوید!"
+
+#~ msgid "Remember me"
+#~ msgstr "مرا به خاطر بسپار"
+
+#~ msgid "Lost your password?"
+#~ msgstr "فراموشی رمز عبور؟"
+
+#~ msgid "Log out"
+#~ msgstr "خروج"
+
+#~ msgid "Change your Name"
+#~ msgstr "تغییر نام"
+
+#~ msgid "Display Name"
+#~ msgstr "نام نمایشی"
+
+#~ msgid "Email Address"
+#~ msgstr "آدرس ایمیل"
+
+#~ msgid "Change your Password"
+#~ msgstr "تغییر رمز عبور"
+
+#~ msgid "New Password"
+#~ msgstr "رمز عبور جدید"
+
+#~ msgid "Re-enter Password"
+#~ msgstr "رمز عبور رو مجددا وارد کنید"
+
+#~ msgid "Please note after changing your password, you must log back in."
+#~ msgstr ""
+#~ "لطفا در نظر داشته باشید که در صورت تغییر رمز عبور, باید دوباره لاگین کنید."
+
+#~ msgid "Save Changes"
+#~ msgstr "ذخیره تغییرات"
+
+#~ msgid "Username"
+#~ msgstr "نام کاربری"
+
+#~ msgid "Password Again"
+#~ msgstr "تایید رمز عبور"
+
+#~ msgid "Choose your subscription level"
+#~ msgstr "یک سطح اشتراک انتخاب کنید"
+
+#~ msgid "free"
+#~ msgstr "رایگان"
+
+#~ msgid "unlimited"
+#~ msgstr "نامحدود"
+
+#~ msgid "You have not created any subscription levels yet"
+#~ msgstr "سطح اشتراکی موجود نیست"
+
+#~ msgid "Discount Code"
+#~ msgstr "کد تخفیف"
+
+#~ msgid "Valid"
+#~ msgstr "معتبر"
+
+#~ msgid "Apply"
+#~ msgstr "اعمال"
+
+#~ msgid "Choose Your Payment Method"
+#~ msgstr "روش پرداخت"
+
+#~ msgid ""
+#~ "Your %s subscription has been successfully cancelled. Your membership "
+#~ "will expire on %s."
+#~ msgstr "اشتراک %s شما با موفقیت لغو شد , تارخ انقضای اشتراک %s."
+
+#~ msgid "Show articles from:"
+#~ msgstr "نمایش تحلیل ها از تاریخ:"
+
+#~ msgid "All dates"
+#~ msgstr "همه تاریخ ها"
+
+#~ msgid "Specific date"
+#~ msgstr "زمان مشخص"
+
+#~ msgid "Step2: Select a category"
+#~ msgstr "قدم دوم :‌ یک دسته بندی انتخاب کنید"
+
+#~ msgid "Account overview"
+#~ msgstr "نمای کلی حساب"
+
+#~ msgid "Status"
+#~ msgstr "وضعیت حساب"
+
+#~ msgid "Subscription"
+#~ msgstr "اشتراک"
+
+#~ msgid "Renewal Date"
+#~ msgstr "تاریخ تمدید"
+
+#~ msgid "Expiration"
+#~ msgstr "تاریخ انقضا"
+
+#~ msgid "Actions"
+#~ msgstr "عملیات ها"
+
+#~ msgid "Renew your subscription"
+#~ msgstr "تمدید سرویس"
+
+#~ msgid "Upgrade or change your subscription"
+#~ msgstr "ارتقا یا تغییر اشتراک"
+
+#~ msgid "Cancel your subscription"
+#~ msgstr "لغو اشتراک"
+
+#~ msgid "Invoice #"
+#~ msgstr "شماره فاکتور"
+
+#~ msgid "Amount"
+#~ msgstr "مقدار"
+
+#~ msgid "Payment Status"
+#~ msgstr "وضعیت پرداخت"
+
+#~ msgid "Date"
+#~ msgstr "تاریخ"
+
+#~ msgid "View Receipt"
+#~ msgstr "مشاهده رسید"
+
+#~ msgid "You have not made any payments."
+#~ msgstr "شما هیچ پرداختی انجام نداده اید."
+
+#~ msgid ""
+#~ "Are you sure you want to cancel your subscription? If you cancel, your "
+#~ "membership will expire on %s."
+#~ msgstr ""
+#~ "آیا مطئنید میخواهید اشتراک خود را لغو کنید؟ در صورت لغو, اشتراک شما در %s "
+#~ "منقضی خواهد شد."
+
+#~ msgid "Categories"
+#~ msgstr "دسته بندی ها"
+
+#~ msgid "Latest news"
+#~ msgstr "آخرین اخبار"
+
+#~ msgid "Most Popular"
+#~ msgstr "محبوب ترین ها"
+
+#~ msgid "Hello %s"
+#~ msgstr "سلام %s"
+
+#~ msgid "Login First!!"
+#~ msgstr "لطفا وارد حسابتان شوید!!"
+
+#~ msgid "Access Denied"
+#~ msgstr "شما اجازه ی دسترسی به این بخش را ندارید"
+
+#~ msgid ""
+#~ "You must be logged in to access this page, <a href=\"%s\">Click here</a> "
+#~ "to login."
+#~ msgstr ""
+#~ "برای دسترسی به این صفحه ابتدا باید وارد حساب خود شوید, برای ورود به حساب "
+#~ "خود <a href=\"%s\">اینجا را کلیک کنید</a>."
+
+#~ msgid "Buy now"
+#~ msgstr "ثبت سفارش"

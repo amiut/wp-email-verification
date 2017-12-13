@@ -30,6 +30,11 @@ class DWEmailVerify{
 	public $secret = "25#-asdv8+abox";
 
 	/**
+	 * Value of all user meta rows w/ `verify-lock` key AFTER email has been verified
+	 */
+	const UNLOCKED = 'unlocked';
+
+	/**
 	 * Construct
 	 */
 	public function __construct(){
@@ -152,7 +157,7 @@ class DWEmailVerify{
 	 */
 	public function lock_user( $user_id ){
 		$user = get_user_by('id', $user_id);
-		add_user_meta( $user_id, 'verify-lock', $this->generate_hash( $user->data->user_email ) );
+		update_user_meta( $user_id, 'verify-lock', $this->generate_hash( $user->data->user_email ) );
 	}
 
 	/**
@@ -160,7 +165,7 @@ class DWEmailVerify{
 	 * @param int  $user_id
 	 */
 	public function unlock_user( $user_id ){
-		delete_user_meta( $user_id, 'verify-lock' );
+		update_user_meta( $user_id, 'verify-lock', self::UNLOCKED );
 	}
 
 	/**
@@ -183,7 +188,7 @@ class DWEmailVerify{
 	public function check_active_user( $user, $username ){
 		$lock = get_user_meta( $user->ID, "verify-lock", true );
 
-		if( $lock && ! empty( $lock ) ) {
+		if( $lock && ! empty( $lock ) && $lock !== self::UNLOCKED ) {
 			return new WP_Error( 'email_not_verified', sprintf(
 				__('You have not verified your email address, please check your email and click on verification link we sent you, <a href="#resend" onClick="%s">Re-send the link</a>', 'dwverify'),
 				"resend_verify_link('{$username}'); return false;"
@@ -249,7 +254,19 @@ class DWEmailVerify{
 	 * Does user needs email validation?
 	 */
 	public function needs_validation( $user_id ){
-		return boolval( get_user_meta( $user_id, 'verify-lock', true ) );
+		$lock_value = get_user_meta( $user_id, 'verify-lock', true );
+		
+		/**
+		 * This check allows segregating users into 3 groups: those who haven't validated b/c they signed up after
+		 * this functionality was added, those who haven't validated b/c they simply haven't clicked the link in
+		 * their email yet, and those who *have* validated. Users who existed before this plugin will continue to
+		 * have access, but keeping these three groups separate allows for requiring them to validate in the future.
+		 */
+		if ( empty( $lock_value ) || $lock_value === self::UNLOCKED ) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	/**

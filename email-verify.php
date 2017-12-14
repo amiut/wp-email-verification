@@ -186,9 +186,8 @@ class DWEmailVerify{
 	 * @param str       $username
 	 */
 	public function check_active_user( $user, $username ){
-		$lock = get_user_meta( $user->ID, "verify-lock", true );
-
-		if( $lock && ! empty( $lock ) && $lock !== self::UNLOCKED ) {
+		$needs_verification = $this->needs_validation( $user->ID );
+		if( $needs_verification !== false ) {
 			return new WP_Error( 'email_not_verified', sprintf(
 				__('You have not verified your email address, please check your email and click on verification link we sent you, <a href="#resend" onClick="%s">Re-send the link</a>', 'dwverify'),
 				"resend_verify_link('{$username}'); return false;"
@@ -207,10 +206,10 @@ class DWEmailVerify{
 		if( ! $user || ! $user instanceof WP_User )
 			return;
 
-		$lock = get_user_meta( $user->ID, "verify-lock", true );
+		$lock = $this->needs_validation( $user->ID );
 
-		// Ignore if there is no lock
-		if( ! $lock || empty( $lock ) )
+		// Ignore if user is not locked
+		if( $lock === false )
 			return;
 
 		$user_email = $user->data->user_email;
@@ -251,22 +250,19 @@ class DWEmailVerify{
 	}
 
 	/**
-	 * Does user needs email validation?
+	 * Return false if user doesn't need validation, stored hash if it does
 	 */
 	public function needs_validation( $user_id ){
-		$lock_value = get_user_meta( $user_id, 'verify-lock', true );
-		
-		/**
-		 * This check allows segregating users into 3 groups: those who haven't validated b/c they signed up after
-		 * this functionality was added, those who haven't validated b/c they simply haven't clicked the link in
-		 * their email yet, and those who *have* validated. Users who existed before this plugin will continue to
-		 * have access, but keeping these three groups separate allows for requiring them to validate in the future.
-		 */
-		if ( empty( $lock_value ) || $lock_value === self::UNLOCKED ) {
-			return false;
-		} else {
-			return true;
+		$needs_verification = false;
+		// If the verification metadata doesn't even exist, assume token hasn't been issued. That would indicate that
+		// the user registered at a time when this plugin was not installed/active. Don't require verification in that case.
+		if( metadata_exists( 'user', $user_id, "verify-lock" ) ) {
+			$lock = get_user_meta( $user_id, "verify-lock", true );
+			if( $lock !== self::UNLOCKED ) {
+				$needs_verification = $lock;
+			}
 		}
+		return $needs_verification;
 	}
 
 	/**
@@ -278,13 +274,13 @@ class DWEmailVerify{
 		$user_id = absint( $_GET['user_id'] );
 
 		// user already verified
-		if( ! $this->needs_validation( $user_id ) ) {
+		$stored_hash = $this->needs_validation( $user_id );
+		if( $stored_hash === false )
 			return;
-		}
 
-		$hash =  $_GET['verify_email'];
+		$user_hash =  $_GET['verify_email'];
 
-		if( $hash === get_user_meta( $user_id, 'verify-lock', true ) ) {
+		if( $user_hash === $stored_hash ) {
 			return true;
 		} else {
 			return false;

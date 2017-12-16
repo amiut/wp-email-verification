@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Verify email plugin\n"
-"POT-Creation-Date: 2017-10-25 02:05+0330\n"
-"PO-Revision-Date: 2017-10-25 02:05+0330\n"
+"POT-Creation-Date: 2017-11-27 00:06+0000\n"
+"PO-Revision-Date: 2017-11-27 00:06+0000\n"
 "Last-Translator: Amin <amin.pe94@gmail.com>\n"
 "Language-Team: Am!n <dornaweb.com>\n"
 "Language: fa\n"
@@ -27,7 +27,7 @@ msgstr "آیا مطمئنید میخواهید لینک فعالسازی دوب�
 msgid "Authorize"
 msgstr "تایید ایمیل"
 
-#: email-verify.php:186
+#: email-verify.php:188
 #, php-format
 msgid ""
 "You have not verified your email address, please check your email and click "
@@ -38,43 +38,43 @@ msgstr ""
 "فعالسازی کلیک کنید, <a href=\"#resend\" onClick=\"%s\">ارسال مجدد لینک "
 "فعالسازی</a>"
 
-#: email-verify.php:222
+#: email-verify.php:224
 msgid "Verify your email address"
 msgstr "ایمیل خود را تایید کنید"
 
-#: settings.php:81 settings.php:95
+#: settings.php:78 settings.php:92
 msgid "Email verification settings"
 msgstr "تنظیمات تایید ایمیل"
 
-#: settings.php:82
+#: settings.php:79
 msgid "email verification"
 msgstr "تایید ایمیل"
 
-#: settings.php:110
+#: settings.php:107
 msgid "Authorize page: "
 msgstr "صفحه تایید ایمیل: "
 
-#: settings.php:123
+#: settings.php:120
 msgid "Auto login"
 msgstr "ورود خودکار"
 
-#: settings.php:124
+#: settings.php:121
 msgid "Auto login: "
 msgstr "ورود خودکار: "
 
-#: settings.php:126
+#: settings.php:123
 msgid "Automatically sign-in after verification"
 msgstr "بعد از تایید بصورت خودکار کاربر را لاگین کن"
 
-#: settings.php:131
+#: settings.php:128
 msgid "Redirect page: "
 msgstr "صفحه ریدایرکت: "
 
-#: settings.php:144
+#: settings.php:141
 msgid "Max Re-send attempts: "
 msgstr "حداکثر ارسال مجدد: "
 
-#: settings.php:147
+#: settings.php:144
 msgid ""
 "Max number of re-send requests a user can make, more than that, his account "
 "will be locked."
@@ -82,15 +82,23 @@ msgstr ""
 "اگر کاربر بیشتر از این تعداد درخواست ارسال مجدد لینک فعالسازی ارسال کند, "
 "اکانتش قفل می شود."
 
-#: settings.php:172
+#: settings.php:169
 msgid "-Select a page-"
 msgstr "-یک صفحه انتخاب کنید-"
 
-#: shortcode.php:78
+#: shortcode.php:77
+msgid ""
+"You have successfully registered on our website, Please check your email and "
+"click on the link we sent you to verify your email address."
+msgstr ""
+"شما با موقیت ثبت نام کردید, لطفا ایمیل خود را چک کنید و بر روی لینکی که برای "
+"شما ارسال کردیم کلیک کنید تا آدرس ایمیل شما تایید شود."
+
+#: shortcode.php:82
 msgid "Invalid request"
 msgstr "درخواست شما معتبر نیست"
 
-#: shortcode.php:82
+#: shortcode.php:86
 #, php-format
 msgid ""
 "Your email has been verified, you will be redirected in a few seconds <a "
@@ -100,7 +108,7 @@ msgstr ""
 "ایمیل شما با موفقیت تایید شد و طی چند ثانیه منتقل می شوید در صورتی که بطور "
 "خودکار منتقل نشدید ,  <a href=\"%s\">کلیک کنید</a>."
 
-#: shortcode.php:86
+#: shortcode.php:90
 msgid "Sorry we could not verify your email address."
 msgstr "متاسفیم , نتوانستیم ایمیل شما را تایید کنیم."
 

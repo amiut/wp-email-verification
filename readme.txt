@@ -48,3 +48,11 @@ Once you activate it, new users that register on your site must verify their ema
 * Fixed some issues
 * Persian language updated
 * Multisite integration
+
+= 1.1.1 =
+* Some tiny bugs fixed
+* Translations updated
+
+= 1.1.2 =
+* Translations updated
+* Bug fixed

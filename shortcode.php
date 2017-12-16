@@ -73,6 +73,10 @@ class DWEmailVerifyShortcode{
 	function shortcode_handler( $atts, $content = null ) {
 		$output = '';
 
+		if( ! empty( $_GET['awaiting-verification'] ) && 'true' == $_GET['awaiting-verification'] ) {
+			return __('You have successfully registered on our website, Please check your email and click on the link we sent you to verify your email address.', 'dwverify');
+		}
+
 		switch ( $this->validation_status ) {
 			case 'invalid_request':
 				$output .= __('Invalid request', 'dwverify');

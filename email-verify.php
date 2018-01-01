@@ -30,6 +30,11 @@ class DWEmailVerify{
 	public $secret = "25#-asdv8+abox";
 
 	/**
+	 * Value of all user meta rows w/ `verify-lock` key AFTER email has been verified
+	 */
+	const UNLOCKED = 'unlocked';
+
+	/**
 	 * Construct
 	 */
 	public function __construct(){
@@ -152,7 +157,7 @@ class DWEmailVerify{
 	 */
 	public function lock_user( $user_id ){
 		$user = get_user_by('id', $user_id);
-		add_user_meta( $user_id, 'verify-lock', $this->generate_hash( $user->data->user_email ) );
+		update_user_meta( $user_id, 'verify-lock', $this->generate_hash( $user->data->user_email ) );
 	}
 
 	/**
@@ -160,7 +165,7 @@ class DWEmailVerify{
 	 * @param int  $user_id
 	 */
 	public function unlock_user( $user_id ){
-		delete_user_meta( $user_id, 'verify-lock' );
+		update_user_meta( $user_id, 'verify-lock', self::UNLOCKED );
 	}
 
 	/**
@@ -181,9 +186,8 @@ class DWEmailVerify{
 	 * @param str       $username
 	 */
 	public function check_active_user( $user, $username ){
-		$lock = get_user_meta( $user->ID, "verify-lock", true );
-
-		if( $lock && ! empty( $lock ) ) {
+		$needs_verification = $this->needs_validation( $user->ID );
+		if( $needs_verification !== false ) {
 			return new WP_Error( 'email_not_verified', sprintf(
 				__('You have not verified your email address, please check your email and click on verification link we sent you, <a href="#resend" onClick="%s">Re-send the link</a>', 'dwverify'),
 				"resend_verify_link('{$username}'); return false;"
@@ -202,10 +206,10 @@ class DWEmailVerify{
 		if( ! $user || ! $user instanceof WP_User )
 			return;
 
-		$lock = get_user_meta( $user->ID, "verify-lock", true );
+		$lock = $this->needs_validation( $user->ID );
 
-		// Ignore if there is no lock
-		if( ! $lock || empty( $lock ) )
+		// Ignore if user is not locked
+		if( $lock === false )
 			return;
 
 		$user_email = $user->data->user_email;
@@ -246,10 +250,19 @@ class DWEmailVerify{
 	}
 
 	/**
-	 * Does user needs email validation?
+	 * Return false if user doesn't need validation, stored hash if it does
 	 */
 	public function needs_validation( $user_id ){
-		return boolval( get_user_meta( $user_id, 'verify-lock', true ) );
+		$needs_verification = false;
+		// If the verification metadata doesn't even exist, assume token hasn't been issued. That would indicate that
+		// the user registered at a time when this plugin was not installed/active. Don't require verification in that case.
+		if( metadata_exists( 'user', $user_id, "verify-lock" ) ) {
+			$lock = get_user_meta( $user_id, "verify-lock", true );
+			if( $lock !== self::UNLOCKED ) {
+				$needs_verification = $lock;
+			}
+		}
+		return $needs_verification;
 	}
 
 	/**
@@ -261,13 +274,13 @@ class DWEmailVerify{
 		$user_id = absint( $_GET['user_id'] );
 
 		// user already verified
-		if( ! $this->needs_validation( $user_id ) ) {
+		$stored_hash = $this->needs_validation( $user_id );
+		if( $stored_hash === false )
 			return;
-		}
 
-		$hash =  $_GET['verify_email'];
+		$user_hash =  $_GET['verify_email'];
 
-		if( $hash === get_user_meta( $user_id, 'verify-lock', true ) ) {
+		if( $user_hash === $stored_hash ) {
 			return true;
 		} else {
 			return false;

@@ -25,11 +25,6 @@ class DWEmailVerify{
 	const PLUGIN_VERSION = '1.1.2';
 
 	/**
-	 * @var str $secret
-	 */
-	public $secret = "25#-asdv8+abox";
-
-	/**
 	 * Value of all user meta rows w/ `verify-lock` key AFTER email has been verified
 	 */
 	const UNLOCKED = 'unlocked';
@@ -157,7 +152,7 @@ class DWEmailVerify{
 	 */
 	public function lock_user( $user_id ){
 		$user = get_user_by('id', $user_id);
-		update_user_meta( $user_id, 'verify-lock', $this->generate_hash( $user->data->user_email ) );
+		update_user_meta( $user_id, 'verify-lock', $this->generate_hash() );
 	}
 
 	/**
@@ -169,14 +164,13 @@ class DWEmailVerify{
 	}
 
 	/**
-	 * Generate a url-friendly verification hash
+	 * Generate a cryptographically-secure, url-friendly verification hash
 	 *
 	 * @param str $email
 	 */
-	public function generate_hash( $email = '' ){
-		$key = $email.$this->secret . rand(0, 1000);
-
-		return MD5( $key );
+	public function generate_hash(){
+		$bytes = random_bytes( 16 );
+		return bin2hex( $bytes );
 	}
 
 	/**

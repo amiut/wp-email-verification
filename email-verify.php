@@ -274,11 +274,7 @@ class DWEmailVerify{
 
 		$user_hash =  $_GET['verify_email'];
 
-		if( $user_hash === $stored_hash ) {
-			return true;
-		} else {
-			return false;
-		}
+		return hash_equals( $stored_hash, $user_hash );
 	}
 
 	/**

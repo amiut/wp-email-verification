@@ -262,17 +262,12 @@ class DWEmailVerify{
 	/**
 	 * Validate hash
 	 */
-	public function hash_valid(){
-		if( empty( $_GET['verify_email'] ) || empty( $_GET['user_id'] ) || ! preg_match( '/^[a-f0-9]{32}$/', $_GET['verify_email'] ) ) return;
-
-		$user_id = absint( $_GET['user_id'] );
+	public function hash_valid( $user_hash, $user_id ){
 
 		// user already verified
 		$stored_hash = $this->needs_validation( $user_id );
 		if( $stored_hash === false )
 			return;
-
-		$user_hash =  $_GET['verify_email'];
 
 		return hash_equals( $stored_hash, $user_hash );
 	}
@@ -280,19 +275,18 @@ class DWEmailVerify{
 	/**
 	 * Verify user's email
 	 */
-	public function verify_if_valid( $signon = false ){
-		if( ! $this->hash_valid() ) return;
+	public function verify_if_valid( $user_hash, $user_id, $signon = false ){
+		if( ! $this->hash_valid( $user_hash, $user_id ) ) return;
 
-		$user_id = absint( $_GET['user_id'] );
 		$user = get_user_by('id', $user_id);
 
-		// Unlock user from loggin in
+		// Unlock user from logging in
 		$this->unlock_user( $user_id );
 
 		if( get_option('dw_verify_autologin') ) {
 			wp_clear_auth_cookie();
-		    wp_set_current_user ( $user->ID );
-		    wp_set_auth_cookie  ( $user->ID );
+			wp_set_current_user ( $user->ID );
+			wp_set_auth_cookie  ( $user->ID );
 		}
 
 		return true;

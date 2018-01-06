@@ -24,6 +24,20 @@ class DWEmailVerifyShortcode{
 	public $shortcode_tag = 'dw-verify-email';
 
 	/**
+	 * $token_cookie_name
+	 * holds the name of the verify token cookie
+	 * @var string
+	 */
+	public $token_cookie_name = 'dw_verify_token';
+
+	/**
+	 * $cookie_path
+	 * holds the path of the token cookie. MUST be the same when setting and unsetting the cookie, or else it won't be unset properly
+	 * @var string
+	 */
+	public $cookie_path = '/';
+
+	/**
 	 * __construct
 	 * class constructor will set the needed filter and action hooks
 	 *
@@ -37,15 +51,41 @@ class DWEmailVerifyShortcode{
 	public function verify_stuff(){
 		if( ! is_page( get_option('dw_verify_authorize_page') ) ) return;
 
+		/** 
+		 * This page strips the verification token from the URL and redirects back to itself, to guard against referrer leakage
+		 * See https://security.stackexchange.com/a/117871
+		*/
+
 		$user_id = absint( $_GET['user_id'] );
 
-		if( empty( $_GET['verify_email'] ) || empty( $_GET['user_id'] ) || ! preg_match( '/^[a-f0-9]{32}$/', $_GET['verify_email'] ) || ! DWEmailVerify::instance()->needs_validation( $user_id ) ) {
+		if( empty( $_GET['user_id'] ) || ! DWEmailVerify::instance()->needs_validation( $user_id ) ) {
 			$this->validation_status = 'invalid_request';
 			return;
 		}
 
+		// Check if URL contains verification token
+		if( empty( $_GET['verify_email'] ) || ! preg_match( '/^[a-f0-9]{32}$/', $_GET['verify_email'] ) ) {
+			// If it *doesn't*, check for it in a cookie
+			if( ! isset( $_COOKIE[ $this->token_cookie_name ] ) ) {
+				// If it isn't there, validation attempt has failed
+				$this->validation_status = 'invalid_request';
+				return;
+			}
+		} else {
+			// If it does, store it in a cookie and redirect back here, stripping token from URL in process
+			setcookie( $this->token_cookie_name, $_GET[ 'verify_email' ], time() + 120, $this->cookie_path );
+			$redirect_to = add_query_arg( array(
+				'user_id' => $user_id
+			), get_permalink( get_option( 'dw_verify_authorize_page' ) ) );
+			wp_safe_redirect( $redirect_to );
+			exit;
+		}
 
-		if( DWEmailVerify::instance()->verify_if_valid() ) {
+		// If we get this far, we've found the token in a cookie. Unset the cookie first, then attempt to validate the token
+		$token = $_COOKIE[ $this->token_cookie_name ];
+		unset( $_COOKIE[ $this->token_cookie_name ] );
+		setcookie( $this->token_cookie_name, '', time() - 3600, $this->cookie_path ); // cookie path must be included and match what was set or it won't delete
+		if( DWEmailVerify::instance()->verify_if_valid( $token, $user_id ) ) {
 			$this->validation_status = 'validated';
 
 			add_action( 'wp_head', [$this, 'page_redirect'] );

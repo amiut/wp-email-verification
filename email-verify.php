@@ -142,8 +142,8 @@ class DWEmailVerify{
 	public function send_verification_link( $user_id ){
 		$user = get_user_by('id', $user_id);
 
-		$this->lock_user( $user_id );
-		$this->send_email( $user );
+		$token = $this->lock_user( $user_id );
+		$this->send_email( $token, $user );
 	}
 
 	/**
@@ -152,7 +152,12 @@ class DWEmailVerify{
 	 */
 	public function lock_user( $user_id ){
 		$user = get_user_by('id', $user_id);
-		update_user_meta( $user_id, 'verify-lock', $this->generate_hash() );
+		$token = $this->generate_token();
+		$hash_method = 'sha256';
+		//update_user_meta( $user_id, 'verify-lock', $token );
+		update_user_meta( $user_id, 'verify-lock', hash( $hash_method, $token ) );
+		update_user_meta( $user_id, 'verify-lock-hash-method', $hash_method );
+		return $token;
 	}
 
 	/**
@@ -164,11 +169,11 @@ class DWEmailVerify{
 	}
 
 	/**
-	 * Generate a cryptographically-secure, url-friendly verification hash
+	 * Generate a cryptographically-secure, url-friendly verification token
 	 *
 	 * @param str $email
 	 */
-	public function generate_hash(){
+	public function generate_token(){
 		$bytes = random_bytes( 16 );
 		return bin2hex( $bytes );
 	}
@@ -196,7 +201,7 @@ class DWEmailVerify{
 	 *
 	 * @param WP_User $user
 	 */
-	public function send_email( $user = false ){
+	public function send_email( $token, $user = false ){
 		if( ! $user || ! $user instanceof WP_User )
 			return;
 
@@ -222,7 +227,7 @@ class DWEmailVerify{
 		    ->subject( __('Verify your email address', 'dwverify') )
 		    ->template( $template, apply_filters( 'dw_verify_email_template_args', [
 		        'name' => $user->data->display_name,
-		        'link' => add_query_arg( ['user_id' => $user->ID, 'verify_email' => $lock], $this->authorize_page_url() ),
+		        'link' => add_query_arg( ['user_id' => $user->ID, 'verify_email' => $token], $this->authorize_page_url() ),
 		    ]) )
 		    ->send();
 	}
@@ -262,14 +267,21 @@ class DWEmailVerify{
 	/**
 	 * Validate hash
 	 */
-	public function hash_valid( $user_hash, $user_id ){
+	public function hash_valid( $user_token, $user_id ){
 
 		// user already verified
 		$stored_hash = $this->needs_validation( $user_id );
 		if( $stored_hash === false )
 			return;
 
-		return hash_equals( $stored_hash, $user_hash );
+		// If the token stored for this user was hashed, hash the received token using the same method
+		// Retrieving the method like this means the plugin will be backwards-compatible with versions that didn't hash the token
+		$hash_method = get_user_meta( $user_id, 'verify-lock-hash-method', true );
+		if( $hash_method ) {
+			$user_token = hash( $hash_method, $user_token );
+		}
+
+		return hash_equals( $stored_hash, $user_token );
 	}
 
 	/**

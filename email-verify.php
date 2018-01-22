@@ -131,8 +131,21 @@ class DWEmailVerify{
 		}
 
 		$this->send_verification_link( $user_id );
-		wp_redirect( add_query_arg( 'awaiting-verification', 'true', $this->authorize_page_url() ) );
-		exit;
+
+		/**
+		 * Default behavior is to redirect to the authorize page and exit. However, that prevents other plugins that hook into the
+		 * registration process from being run. For example, a plugin that, after registration, bestows special privileges on
+		 * the new user, would be short-circuited if execution exits here. Therefore, make it possible to override the redirect
+		 * via this filter.
+		 */
+		$should_redirect = true;
+		$should_redirect = apply_filters( 'dw_verify_should_redirect_after_register', $should_redirect );
+		if( $should_redirect ) {
+			wp_redirect( add_query_arg( 'awaiting-verification', 'true', $this->authorize_page_url() ) );
+			exit;
+		} else {
+			return;
+		}
 	}
 
 	/**

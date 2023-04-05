@@ -1,5 +1,24 @@
 {
+    "name": "amiut/wp-email-verification",
+    "description": "Wordpress plugin to create specification tables",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+      {
+        "name": "Dornaweb",
+        "email": "info@dornaweb.com",
+        "homepage": "https://www.dornaweb.com",
+        "role": "company"
+      },
+      {
+        "name": "Amin A. Rezapour",
+        "email": "hi@amin.nz",
+        "homepage": "https://amin.nz"
+      }
+    ],
     "require": {
-        "anthonybudd/WP_Mail": "^1.0"
+        "anthonybudd/wp_mail": "^1.0"
     }
 }

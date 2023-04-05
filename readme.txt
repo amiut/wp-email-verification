@@ -41,6 +41,10 @@ Once you activate it, new users that register on your site must verify their ema
 
 == Changelog ==
 
+= 1.1.4 2023-04-05 =
+* Fix release workflow.
+* Tested with latest WP version.
+
 = 1.1.3 2023-04-05 =
 * Santize/Escape all outputs in the plugin to prevent possible security issues. [#5](https://github.com/amiut/wp-email-verification/pull/20)
 

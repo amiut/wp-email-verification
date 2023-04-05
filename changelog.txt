@@ -1,3 +1,6 @@
+= 1.1.5 2023-04-05 =
+* Fix release workflow.
+
 = 1.1.4 2023-04-05 =
 * Fix release workflow.
 * Tested with latest WP version.

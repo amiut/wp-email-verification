@@ -41,6 +41,9 @@ Once you activate it, new users that register on your site must verify their ema
 
 == Changelog ==
 
+= 1.1.5 2023-04-05 =
+* Fix release workflow.
+
 = 1.1.4 2023-04-05 =
 * Fix release workflow.
 * Tested with latest WP version.
@@ -51,17 +54,5 @@ Once you activate it, new users that register on your site must verify their ema
 = 1.1.2 =
 * Translations updated
 * Bug fixed
-
-= 1.1.1 =
-* Some tiny bugs fixed
-* Translations updated
-
-= 1.1 =
-* Added ability to ignore verification for admins in dashboard.
-* Added ability to request for re-sending the verification link.
-* Added Max re-send verification link requests
-* Fixed some issues
-* Persian language updated
-* Multisite integration
 
 [See changelog for all versions](https://raw.githubusercontent.com/amiut/wp-email-verification/main/changelog.txt).

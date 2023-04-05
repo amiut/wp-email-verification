@@ -2,7 +2,7 @@
 /**
  * Plugin Name: 	  Email Verification on Signups
  * Description: 	  Send a verification email to newly registered users.
- * Version:           1.1.4
+ * Version:           1.1.5
  * Author:            Am!n
  * Author URI: 		  http://www.dornaweb.com
  * License:           MIT
@@ -22,7 +22,7 @@ class DWEmailVerify{
 	/**
 	 * Version
 	 */
-	const PLUGIN_VERSION = '1.1.4';
+	const PLUGIN_VERSION = '1.1.5';
 
 	/**
 	 * Value of all user meta rows w/ `verify-lock` key AFTER email has been verified

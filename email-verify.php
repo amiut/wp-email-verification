@@ -72,7 +72,7 @@ class DWEmailVerify{
 		wp_register_script( 'dw-verify-js', $this->url() . 'assets/js/verify-email.js', ['jquery'], null, true );
 		wp_localize_script( 'dw-verify-js', 'dwverify', [
 			'ajaxurl'		=> admin_url('admin-ajax.php'),
-			'confirm_text'	=> __('Are you sure you want to re-send verification link?', 'dwverify')
+			'confirm_text'	=> esc_html__('Are you sure you want to re-send verification link?', 'dwverify')
 		]);
 		wp_enqueue_script( 'dw-verify-js' );
 	}
@@ -83,7 +83,7 @@ class DWEmailVerify{
 	public function create_plugin_pages() {
 		$pages = [
 			'authorize' => [
-				'title' => __( 'Authorize', 'dwverify' ),
+				'title' => esc_html__( 'Authorize', 'dwverify' ),
 				'content' => '[dw-verify-email]',
 				'option_id' => 'dw_verify_authorize_page'
 			]
@@ -200,6 +200,7 @@ class DWEmailVerify{
 	public function check_active_user( $user, $username ){
 		$needs_verification = $this->needs_validation( $user->ID );
 		if( $needs_verification !== false ) {
+			$username = esc_attr($username);
 			return new WP_Error( 'email_not_verified', sprintf(
 				__('You have not verified your email address, please check your email and click on verification link we sent you, <a href="#resend" onClick="%s">Re-send the link</a>', 'dwverify'),
 				"resend_verify_link('{$username}'); return false;"
@@ -237,7 +238,7 @@ class DWEmailVerify{
 
 		$email = (new WP_Mail)
 		    ->to( $user_email )
-		    ->subject( __('Verify your email address', 'dwverify') )
+		    ->subject( esc_html__('Verify your email address', 'dwverify') )
 		    ->template( $template, apply_filters( 'dw_verify_email_template_args', [
 		        'name' => $user->data->display_name,
 		        'link' => add_query_arg( ['user_id' => $user->ID, 'verify_email' => $token], $this->authorize_page_url() ),
@@ -346,22 +347,3 @@ new DWEmailVerify();
 
 // hook plugin activated!
 register_activation_hook( __FILE__, [ 'DWEmailVerify', 'plugin_activated' ] );
-
-
-// functions
-/**
- * Var_dump pre-ed!
- * For debugging purposes
- *
- * @param mixed $val desired variable to var_dump
- * @uses var_dump
- *
- * @return string
-*/
-if( !function_exists('dumpit') ) {
-	function dumpit( $val ) {
-		echo '<pre style="direction:ltr;text-align:left;">';
-		var_dump( $val );
-		echo '</pre>';
-	}
-}

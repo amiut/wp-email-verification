@@ -53,7 +53,7 @@ class DWUserVerifyMods extends DWEmailVerify{
 			die( json_encode([
 				'type'		=> 'error',
 				'code'		=> 'invalid_request',
-				'message'	=> __('Inavlid request.', 'dwverify')
+				'message'	=> esc_html__('Inavlid request.', 'dwverify')
 			], JSON_PRETTY_PRINT ) );
 		}
 
@@ -63,7 +63,7 @@ class DWUserVerifyMods extends DWEmailVerify{
 			$message = [
 				'type'		=> 'success',
 				'code'		=> 'verify_link_sent',
-				'message'	=> __('Verification link sent to user\'s email address', 'dwverify')
+				'message'	=> esc_html__('Verification link sent to user\'s email address', 'dwverify')
 			];
 
 		} elseif( $this->needs_validation( $user_id ) ) {
@@ -75,7 +75,7 @@ class DWUserVerifyMods extends DWEmailVerify{
 				$message = [
 					'type'		=> 'success',
 					'code'		=> 'verify_link_sent',
-					'message'	=> __('Verification link sent to your email address', 'dwverify')
+					'message'	=> esc_html__('Verification link sent to your email address', 'dwverify')
 				];
 
 				update_user_meta( $user_id, 'verify-link-attempts', $attempts + 1 );
@@ -84,7 +84,7 @@ class DWUserVerifyMods extends DWEmailVerify{
 				$message = [
 					'type'		=> 'error',
 					'code'		=> 'max_resend_attempts_reached',
-					'message'	=> __('You have tried re-sending verification link too many times, please contact site administrators.', 'dwverify')
+					'message'	=> esc_html__('You have tried re-sending verification link too many times, please contact site administrators.', 'dwverify')
 				];
 
 			}
@@ -93,7 +93,7 @@ class DWUserVerifyMods extends DWEmailVerify{
 			$message = [
 				'type'		=> 'error',
 				'code'		=> 'user_already_verified',
-				'message'	=> __('Your email address is already verified.', 'dwverify')
+				'message'	=> esc_html__('Your email address is already verified.', 'dwverify')
 			];
 
 		}
@@ -108,10 +108,10 @@ class DWUserVerifyMods extends DWEmailVerify{
 	public function ignore_field_html(){ ?>
 		<table class="form-table">
 			<tr>
-				<th scope="row"><?php _e( 'Skip email verification' ); ?></th>
+				<th scope="row"><?php echo esc_html__( 'Skip email verification' ); ?></th>
 				<td>
 					<input type="checkbox" name="skip_verification" id="skip_verification" value="1" checked="checked" />
-					<label for="skip_verification"><?php _e( 'No need for this user to verify their email address.', 'dwverify' ); ?></label>
+					<label for="skip_verification"><?php echo esc_html__( 'No need for this user to verify their email address.', 'dwverify' ); ?></label>
 				</td>
 			</tr>
 		</table>
@@ -122,28 +122,28 @@ class DWUserVerifyMods extends DWEmailVerify{
 	 * Options to re-send verification link, custom verification,... on profile edit pages
 	 */
 	public function verification_control_html( $user ){ ?>
-		<h2><?php _e('Email verification options', 'dwverify'); ?></h2>
+		<h2><?php echo esc_html__('Email verification options', 'dwverify'); ?></h2>
 		<table class="form-table">
 			<tbody>
 				<tr id="dw_resend_verification" class="user-pass1-wrap">
-					<th><label><?php _e('Resend verification email: ', 'dwverify'); ?></label></th>
+					<th><label><?php echo esc_html__('Resend verification email: ', 'dwverify'); ?></label></th>
 					<td>
-						<button type="button" class="button"><?php _e('Resend verification email', 'dwverify'); ?></button>
+						<button type="button" class="button"><?php echo esc_html__('Resend verification email', 'dwverify'); ?></button>
 						<span class="note" style="padding-top: 10px; display: block; color: 90%; font-style: italic; color: #dd2c2c80;">
-							<?php _e('This will lock user\'s account and asks them to verify their email address, once again.', 'dwverify'); ?>
+							<?php echo esc_html__('This will lock user\'s account and asks them to verify their email address, once again.', 'dwverify'); ?>
 						</span>
 					</td>
 				</tr>
 
 				<?php if( $this->needs_validation( $user->ID ) ) : ?>
 					<tr id="dw_unlock_user_wrap" class="user-pass1-wrap">
-						<th><label for="pass1-text"><?php _e('Unlock user: ', 'dwverify'); ?></label></th>
+						<th><label for="pass1-text"><?php echo esc_html__('Unlock user: ', 'dwverify'); ?></label></th>
 						<td>
 							<label for="dw_unlock_user">
 							<input name="dw_unlock_user" id="dw_unlock_user" value="1" type="checkbox">
-							<?php _e('Exclude this user from verification of their email.', 'dwverify'); ?></label>
+							<?php echo esc_html__('Exclude this user from verification of their email.', 'dwverify'); ?></label>
 							<span class="note" style="padding-top: 10px; display: block; color: 90%; font-style: italic; color: #787878;">
-								<?php _e('This user has not verified his/her email address, you can allow him/her, not to.', 'dwverify'); ?>
+								<?php echo esc_html__('This user has not verified his/her email address, you can allow him/her, not to.', 'dwverify'); ?>
 							</span>
 						</td>
 					</tr>
@@ -154,10 +154,10 @@ class DWUserVerifyMods extends DWEmailVerify{
 		<script type="text/javascript">
 			jQuery('#dw_resend_verification button').click( function(e){
 				e.preventDefault();
-				var resend = confirm("<?php _e('This user won\'t be able to sign-in, until they verify their email address again, Are you sure you want to do that?', 'dwverify'); ?>");
+				var resend = confirm("<?php echo esc_attr__('This user won\'t be able to sign-in, until they verify their email address again, Are you sure you want to do that?', 'dwverify'); ?>");
 
 				if( resend === true ){
-					jQuery.get( ajaxurl, { action: 'dw_resend_verify', user_id: <?php echo $user->ID; ?> }, function( response ){
+					jQuery.get( ajaxurl, { action: 'dw_resend_verify', user_id: <?php echo esc_attr($user->ID); ?> }, function( response ){
 						var response = jQuery.parseJSON( response );
 						alert( response.message );
 					});

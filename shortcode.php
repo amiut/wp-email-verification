@@ -51,7 +51,7 @@ class DWEmailVerifyShortcode{
 	public function verify_stuff(){
 		if( ! is_page( get_option('dw_verify_authorize_page') ) ) return;
 
-		/** 
+		/**
 		 * This page strips the verification token from the URL and redirects back to itself, to guard against referrer leakage
 		 * See https://security.stackexchange.com/a/117871
 		*/
@@ -100,7 +100,7 @@ class DWEmailVerifyShortcode{
 	 */
 	public function page_redirect(){
 		if( $redirect = DWEmailVerify::instance()->redirect_url() ) {
-			echo '<meta http-equiv="refresh" content="5;url='. $redirect .'" />';
+			echo '<meta http-equiv="refresh" content="5;url='. esc_url($redirect) .'" />';
 		}
 	}
 
@@ -114,20 +114,20 @@ class DWEmailVerifyShortcode{
 		$output = '';
 
 		if( ! empty( $_GET['awaiting-verification'] ) && 'true' == $_GET['awaiting-verification'] ) {
-			return __('You have successfully registered on our website, Please check your email and click on the link we sent you to verify your email address.', 'dwverify');
+			return esc_html__('You have successfully registered on our website, Please check your email and click on the link we sent you to verify your email address.', 'dwverify');
 		}
 
 		switch ( $this->validation_status ) {
 			case 'invalid_request':
-				$output .= __('Invalid request', 'dwverify');
+				$output .= esc_html__('Invalid request', 'dwverify');
 				break;
 
 			case 'validated' :
-				$output .= sprintf( __('Your email has been verified, you will be redirected in a few seconds <a href="%s">click here</a> if your browser does not redirect you automatically.', 'dwverify'), DWEmailVerify::instance()->redirect_url() );
+				$output .= sprintf( esc_html__('Your email has been verified, you will be redirected in a few seconds <a href="%s">click here</a> if your browser does not redirect you automatically.', 'dwverify'), DWEmailVerify::instance()->redirect_url() );
 				break;
 
 			case 'invalid_hash':
-				$output .= __('Sorry we could not verify your email address.', 'dwverify');
+				$output .= esc_html__('Sorry we could not verify your email address.', 'dwverify');
 				break;
 		}
 

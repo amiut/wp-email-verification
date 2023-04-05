@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3ca89af3d4b16c5ed327ff89359ca70",
+    "content-hash": "fd846796f89f8143422468ef66b24183",
     "packages": [
         {
             "name": "anthonybudd/wp_mail",
@@ -33,15 +33,20 @@
                     "email": "anthonybudd94@gmail.com"
                 }
             ],
+            "support": {
+                "issues": "https://github.com/anthonybudd/WP_Mail/issues",
+                "source": "https://github.com/anthonybudd/WP_Mail/tree/v1.0"
+            },
             "time": "2017-05-16T11:19:12+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }

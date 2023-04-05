@@ -10,9 +10,14 @@ class ComposerStaticInit325dc7e6a82d3c96a25bf802dc951909
         'ad1caa44c8b5bb0e72c7cc6d744bea62' => __DIR__ . '/..' . '/anthonybudd/wp_mail/src/WP_Mail.php',
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->classMap = ComposerStaticInit325dc7e6a82d3c96a25bf802dc951909::$classMap;
 
         }, null, ClassLoader::class);
     }

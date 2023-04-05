@@ -1,0 +1,18 @@
+= 1.1.3 2023-04-05 =
+* Santize/Escape all outputs in the plugin to prevent possible security issues. [#5](https://github.com/amiut/wp-email-verification/pull/20)
+
+= 1.1.2 =
+* Translations updated
+* Bug fixed
+
+= 1.1.1 =
+* Some tiny bugs fixed
+* Translations updated
+
+= 1.1 =
+* Added ability to ignore verification for admins in dashboard.
+* Added ability to request for re-sending the verification link.
+* Added Max re-send verification link requests
+* Fixed some issues
+* Persian language updated
+* Multisite integration

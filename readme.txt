@@ -1,8 +1,8 @@
  === Email verification on signups ===
-Contributors: dornaweb
+Contributors: dornaweb, pelentak
 Tags: email verification, confirm email address, verify email address
 Requires at least: 4
-Tested up to: 4.7
+Tested up to: 6.2
 Requires PHP: 5.6
 License: MIT
 
@@ -41,6 +41,17 @@ Once you activate it, new users that register on your site must verify their ema
 
 == Changelog ==
 
+= 1.1.3 2023-04-05 =
+* Santize/Escape all outputs in the plugin to prevent possible security issues. [#5](https://github.com/amiut/wp-email-verification/pull/20)
+
+= 1.1.2 =
+* Translations updated
+* Bug fixed
+
+= 1.1.1 =
+* Some tiny bugs fixed
+* Translations updated
+
 = 1.1 =
 * Added ability to ignore verification for admins in dashboard.
 * Added ability to request for re-sending the verification link.
@@ -49,10 +60,4 @@ Once you activate it, new users that register on your site must verify their ema
 * Persian language updated
 * Multisite integration
 
-= 1.1.1 =
-* Some tiny bugs fixed
-* Translations updated
-
-= 1.1.2 =
-* Translations updated
-* Bug fixed
+[See changelog for all versions](https://raw.githubusercontent.com/amiut/wp-email-verification/main/changelog.txt).

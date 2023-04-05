@@ -12,3 +12,7 @@ There are also `dw_verify_email_template_path` and `dw_verify_email_template_arg
 ***
 ## 3rd-party scripts included
 [WP_MAIL](https://github.com/anthonybudd/WP_Mail) ( for sending templated emails )
+
+## Changelog
+
+[See changelog for all versions](https://raw.githubusercontent.com/amiut/wp-email-verification/main/changelog.txt).

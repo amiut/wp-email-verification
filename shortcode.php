@@ -116,24 +116,24 @@ class DWEmailVerifyShortcode{
 
 		$awaiting_verification = (string) filter_input(INPUT_GET, 'awaiting-verification', FILTER_SANITIZE_SPECIAL_CHARS);
 		if( ! empty( $awaiting_verification ) && 'true' == $awaiting_verification ) {
-			return esc_html__('You have successfully registered on our website, Please check your email and click on the link we sent you to verify your email address.', 'dwverify');
+			return __('You have successfully registered on our website, Please check your email and click on the link we sent you to verify your email address.', 'dwverify');
 		}
 
 		switch ( $this->validation_status ) {
 			case 'invalid_request':
-				$output .= esc_html__('Invalid request', 'dwverify');
+				$output .= __('Invalid request', 'dwverify');
 				break;
 
 			case 'validated' :
-				$output .= sprintf( esc_html__('Your email has been verified, you will be redirected in a few seconds <a href="%s">click here</a> if your browser does not redirect you automatically.', 'dwverify'), DWEmailVerify::instance()->redirect_url() );
+				$output .= sprintf( __('Your email has been verified, you will be redirected in a few seconds <a href="%s">click here</a> if your browser does not redirect you automatically.', 'dwverify'), DWEmailVerify::instance()->redirect_url() );
 				break;
 
 			case 'invalid_hash':
-				$output .= esc_html__('Sorry we could not verify your email address.', 'dwverify');
+				$output .= __('Sorry we could not verify your email address.', 'dwverify');
 				break;
 		}
 
-		return $output;
+		return wp_kses_post($output);
 	}
 }
 

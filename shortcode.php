@@ -84,7 +84,7 @@ class DWEmailVerifyShortcode{
 		}
 
 		// If we get this far, we've found the token in a cookie. Unset the cookie first, then attempt to validate the token
-		$token = filter_input(INPUT_COOKIE, $this->token_cookie_name, FILTER_SANITIZE_SPECIAL_CHARS)
+		$token = filter_input(INPUT_COOKIE, $this->token_cookie_name, FILTER_SANITIZE_SPECIAL_CHARS);
 		setcookie( $this->token_cookie_name, '', time() - 3600, $this->cookie_path ); // cookie path must be included and match what was set or it won't delete
 		if( DWEmailVerify::instance()->verify_if_valid( $token, $user_id ) ) {
 			$this->validation_status = 'validated';

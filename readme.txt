@@ -2,8 +2,8 @@
 Contributors: dornaweb, pelentak
 Tags: email verification, confirm email address, verify email address
 Requires at least: 4
-Tested up to: 6.2
-Requires PHP: 5.6
+Tested up to: 6.6.1
+Requires PHP: 7.4
 License: MIT
 
 Send verification links to newly registered users and ask them to confirm their email address to activate their account.
@@ -40,6 +40,10 @@ Once you activate it, new users that register on your site must verify their ema
 3. Wp-Login
 
 == Changelog ==
+
+= 1.1.5 2023-08-25 =
+* Security improvements.
+* Check compatibility with latest WordPress version.
 
 = 1.1.5 2023-04-05 =
 * Fix release workflow.

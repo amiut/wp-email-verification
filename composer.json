@@ -13,12 +13,16 @@
         "role": "company"
       },
       {
-        "name": "Amin A. Rezapour",
+        "name": "Amin Abdolrezapoor",
         "email": "hi@amin.nz",
         "homepage": "https://amin.nz"
       }
     ],
     "require": {
+        "php": ">=7.4",
         "anthonybudd/wp_mail": "^1.0"
+    },
+    "config": {
+      "platform": "7.4"
     }
 }

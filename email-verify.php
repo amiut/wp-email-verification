@@ -2,7 +2,7 @@
 /**
  * Plugin Name: 	  Email Verification on Signups
  * Description: 	  Send a verification email to newly registered users.
- * Version:           1.1.5
+ * Version:           1.1.6
  * Author:            Am!n
  * Author URI: 		  http://www.dornaweb.com
  * License:           MIT

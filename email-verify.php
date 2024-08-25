@@ -126,7 +126,8 @@ class DWEmailVerify{
 	 * @param int $user_id
 	 */
 	public function user_register( $user_id ){
-		if( is_admin() && current_user_can( 'create_users') && ! empty( $_POST['skip_verification'] ) ){
+		$skip_verification = filter_input(INPUT_POST, 'skip_verification', FILTER_SANITIZE_SPECIAL_CHARS);
+		if( is_admin() && current_user_can( 'create_users') && ! empty( $skip_verification ) ){
 			return; // ignore adding verify lock
 		}
 

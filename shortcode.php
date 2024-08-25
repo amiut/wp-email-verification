@@ -56,24 +56,26 @@ class DWEmailVerifyShortcode{
 		 * See https://security.stackexchange.com/a/117871
 		*/
 
-		$user_id = absint( $_GET['user_id'] );
+		$user_id = filter_input(INPUT_GET, 'user_id', FILTER_VALIDATE_INT);
 
-		if( empty( $_GET['user_id'] ) || ! DWEmailVerify::instance()->needs_validation( $user_id ) ) {
+		if( empty( $user_id ) || ! DWEmailVerify::instance()->needs_validation( $user_id ) ) {
 			$this->validation_status = 'invalid_request';
 			return;
 		}
 
+		$verification_token = filter_input(INPUT_GET, 'verify_email', FILTER_SANITIZE_SPECIAL_CHARS);
 		// Check if URL contains verification token
-		if( empty( $_GET['verify_email'] ) || ! preg_match( '/^[a-f0-9]{32}$/', $_GET['verify_email'] ) ) {
+		if( ! preg_match( '/^[a-f0-9]{32}$/', $verification_token ) ) {
 			// If it *doesn't*, check for it in a cookie
-			if( ! isset( $_COOKIE[ $this->token_cookie_name ] ) ) {
+			$cookie_value = filter_input(INPUT_COOKIE, $this->token_cookie_name, FILTER_SANITIZE_SPECIAL_CHARS);
+			if( ! $cookie_value ) {
 				// If it isn't there, validation attempt has failed
 				$this->validation_status = 'invalid_request';
 				return;
 			}
 		} else {
 			// If it does, store it in a cookie and redirect back here, stripping token from URL in process
-			setcookie( $this->token_cookie_name, $_GET[ 'verify_email' ], time() + 120, $this->cookie_path );
+			setcookie( $this->token_cookie_name, $verification_token, time() + 120, $this->cookie_path );
 			$redirect_to = add_query_arg( array(
 				'user_id' => $user_id
 			), get_permalink( get_option( 'dw_verify_authorize_page' ) ) );
@@ -82,8 +84,7 @@ class DWEmailVerifyShortcode{
 		}
 
 		// If we get this far, we've found the token in a cookie. Unset the cookie first, then attempt to validate the token
-		$token = $_COOKIE[ $this->token_cookie_name ];
-		unset( $_COOKIE[ $this->token_cookie_name ] );
+		$token = filter_input(INPUT_COOKIE, $this->token_cookie_name, FILTER_SANITIZE_SPECIAL_CHARS)
 		setcookie( $this->token_cookie_name, '', time() - 3600, $this->cookie_path ); // cookie path must be included and match what was set or it won't delete
 		if( DWEmailVerify::instance()->verify_if_valid( $token, $user_id ) ) {
 			$this->validation_status = 'validated';
@@ -113,7 +114,8 @@ class DWEmailVerifyShortcode{
 	function shortcode_handler( $atts, $content = null ) {
 		$output = '';
 
-		if( ! empty( $_GET['awaiting-verification'] ) && 'true' == $_GET['awaiting-verification'] ) {
+		$awaiting_verification = (string) filter_input(INPUT_GET, 'awaiting-verification', FILTER_SANITIZE_SPECIAL_CHARS);
+		if( ! empty( $awaiting_verification ) && 'true' == $awaiting_verification ) {
 			return esc_html__('You have successfully registered on our website, Please check your email and click on the link we sent you to verify your email address.', 'dwverify');
 		}
 

@@ -30,8 +30,9 @@ class DWUserVerifyMods extends DWEmailVerify{
 	public function profile_update( $user_id ){
 		if ( ! current_user_can( 'edit_users' ) ) return;
 
+		$unlock_user = filter_input(INPUT_POST, 'dw_unlock_user', FILTER_SANITIZE_SPECIAL_CHARS);
 		// Custom unlock un-verified users
-		if( $this->needs_validation( $user_id )  && ! empty( $_POST['dw_unlock_user'] ) ) {
+		if( $this->needs_validation( $user_id )  && ! empty( $unlock_user ) ) {
 			$this->unlock_user( $user_id );
 		}
 	}
@@ -41,10 +42,10 @@ class DWUserVerifyMods extends DWEmailVerify{
 	 * Ajax callback
 	 */
 	public function resend_verify_ajaxcb(){
-		$user_id = absint( $_GET['user_id'] );
+		$user_id = filter_input( INPUT_GET, 'user_id', FILTER_VALIDATE_INT );
 
 		if( ! $user_id ) {
-			$user_login = trim( esc_attr( $_GET['user_login'] ) );
+			$user_login = trim( filter_input( INPUT_GET, 'user_login', FILTER_SANITIZE_SPECIAL_CHARS ) );
 			$user = get_user_by('login', $user_login);
 			$user_id = (int) $user->ID;
 		}

@@ -30,7 +30,7 @@ jobs:
         run: wp package install wp-cli/dist-archive-command
 
       - name: Create ZIP file
-        run: wp dist-archive . ./${{ github.event.release.name }}.zip --plugin-dirname=product-specifications
+        run: wp dist-archive . ./${{ github.event.release.name }}.zip --plugin-dirname=email-verification-on-signups
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
@@ -55,3 +55,4 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: email-verification-on-signups

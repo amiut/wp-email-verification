@@ -23,6 +23,8 @@
         "anthonybudd/wp_mail": "^1.0"
     },
     "config": {
-      "platform": "7.4"
+      "platform": {
+        "php": "7.4"
+      }
     }
 }

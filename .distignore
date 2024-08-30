@@ -8,7 +8,6 @@
 /node_modules/
 /tests/
 babel.config.js
-composer.*
 tsconfig.*
 contributors.html
 docker-compose.yaml

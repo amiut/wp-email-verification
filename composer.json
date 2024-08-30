@@ -2,7 +2,7 @@
     "name": "amiut/wp-email-verification",
     "description": "Wordpress plugin to create specification tables",
     "type": "wordpress-plugin",
-    "license": "MIT",
+    "license": "GPL-2.0-or-later",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "authors": [

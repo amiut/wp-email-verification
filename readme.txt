@@ -1,10 +1,12 @@
  === Email verification on signups ===
 Contributors: dornaweb, pelentak
 Tags: email verification, confirm email address, verify email address
-Requires at least: 4
+Requires at least: 5.9
 Tested up to: 6.6.1
+Stable tag: 1.1.7
 Requires PHP: 7.4
-License: MIT
+License: GNU GPL V2. or later
+License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
 Send verification links to newly registered users and ask them to confirm their email address to activate their account.
 
@@ -41,7 +43,11 @@ Once you activate it, new users that register on your site must verify their ema
 
 == Changelog ==
 
-= 1.1.5 2023-08-25 =
+= 1.1.7 2023-08-30 =
+* Update plugin meta data.
+* Check compatibility with latest WordPress version.
+
+= 1.1.6 2023-08-25 =
 * Security improvements.
 * Check compatibility with latest WordPress version.
 

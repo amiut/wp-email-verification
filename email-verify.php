@@ -195,12 +195,11 @@ class DWEmailVerify{
 	/**
 	 * Prevents users from loggin in, if they have not verified their email address
 	 *
-	 * @param WP_User   $user
-	 * @param str       $username
+	 * @param null|WP_User|WP_Error  $user
+	 * @param str                    $username
 	 */
 	public function check_active_user( $user, $username ){
-		$needs_verification = $this->needs_validation( $user->ID );
-		if( $needs_verification !== false ) {
+		if( $user instanceof WP_User && $this->needs_validation( $user->ID ) !== false ) {
 			$username = esc_attr($username);
 			return new WP_Error( 'email_not_verified', sprintf(
 				__('You have not verified your email address, please check your email and click on verification link we sent you, <a href="#resend" onClick="%s">Re-send the link</a>', 'dwverify'),
